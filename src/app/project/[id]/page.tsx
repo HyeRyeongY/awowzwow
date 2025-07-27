@@ -10,6 +10,12 @@ interface ProjectPageProps {
   }>;
 }
 
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    id: project.id,
+  }));
+}
+
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { id } = await params;
   const project = projects.find((proj) => proj.id === id);
